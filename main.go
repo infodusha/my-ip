@@ -1,15 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"io"
+	"html/template"
 	"log"
 	"net/http"
 	"strings"
 )
 
 func main() {
-	http.HandleFunc("/", getRoot)
+	http.HandleFunc("/", getIndex)
 
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
@@ -17,9 +16,18 @@ func main() {
 	}
 }
 
-func getRoot(w http.ResponseWriter, r *http.Request) {
+type IndexTpl struct {
+	IP string
+}
+
+func getIndex(w http.ResponseWriter, r *http.Request) {
+	t, err := template.New("index.html").ParseFiles("index.html")
+	if err != nil {
+		log.Fatal(err)
+	}
 	ip := getIp(r)
-	_, err := io.WriteString(w, fmt.Sprintf("Your ip4: %s", ip))
+	indexTpl := IndexTpl{ip}
+	err = t.Execute(w, indexTpl)
 	if err != nil {
 		log.Fatal(err)
 	}

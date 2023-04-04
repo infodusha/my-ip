@@ -1,7 +1,6 @@
 FROM golang:1.20 AS builder
 WORKDIR /build
-COPY go.mod ./
-COPY *.go ./
+COPY . ./
 RUN go get -d -v && \
     go build -v -o ./my-ip && \
     chmod +x ./my-ip
