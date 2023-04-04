@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func main() {
@@ -17,7 +18,7 @@ func main() {
 }
 
 func getRoot(w http.ResponseWriter, r *http.Request) {
-	ip := r.RemoteAddr
+	ip := strings.Split(r.RemoteAddr, ":")[0]
 	_, err := io.WriteString(w, fmt.Sprintf("Your ip: %s", ip))
 	if err != nil {
 		log.Fatal(err)
