@@ -10,4 +10,4 @@ WORKDIR /app
 COPY --from=0 /app ./
 RUN chmod +x ./my-ip
 EXPOSE 8080
-ENTRYPOINT ["./my-ip"]
+ENTRYPOINT ["/app/my-ip"]
