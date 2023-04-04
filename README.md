@@ -1,3 +1,3 @@
 # my-ip
 
-Simple go webserver that servers your ip
+Simple go webserver that shows your ip
