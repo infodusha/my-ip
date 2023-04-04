@@ -7,8 +7,8 @@ COPY *.go ./
 
 RUN go get -d -v
 RUN go build -v -o my-ip
-RUN chmod +x /my-ip
+RUN chmod +x my-ip
 
 EXPOSE 8080
 
-CMD ["/my-ip"]
+CMD ["my-ip"]
