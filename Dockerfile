@@ -7,7 +7,7 @@ COPY . ./
 RUN go get -d -v
 RUN go build -v -o my-ip
 
-COPY --from=builder /app/my-ip /app/my-ip
+COPY /app/my-ip /app/my-ip
 
 EXPOSE 8080
 
