@@ -40,3 +40,7 @@ jobs:
           context: .
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+
+      - name: Trigger pull
+        run:
+          curl -H "Authorization: Bearer ${{ secrets.WATCHTOWER_TOKEN }}" https://ic-10.infodusha.ru/v1/update
