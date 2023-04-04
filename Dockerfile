@@ -1,12 +1,14 @@
 FROM golang:1.20
 
-WORKDIR $GOPATH/src/my-ip
+WORKDIR /app
 
-COPY . .
+COPY . ./
 
-RUN go get -d -v ./...
-RUN go build -v ./...
+RUN go get -d -v
+RUN go build -v -o my-ip
+
+COPY --from=builder /app/my-ip /app/my-ip
 
 EXPOSE 8080
 
-CMD ["my-ip"]
+CMD ["/app/my-ip"]
