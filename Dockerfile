@@ -10,4 +10,4 @@ WORKDIR /app
 COPY --from=builder /build ./
 RUN chmod +x ./my-ip
 EXPOSE 8080
-ENTRYPOINT ["/bin/sh", "./my-ip"]
+CMD ["./my-ip"]
