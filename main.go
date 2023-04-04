@@ -34,5 +34,9 @@ func getIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func getIp(r *http.Request) string {
+	forwarded := r.Header.Get("X-Forwarded-For")
+	if forwarded != "" {
+		return forwarded
+	}
 	return strings.Split(r.RemoteAddr, ":")[0]
 }
