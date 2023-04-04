@@ -18,9 +18,13 @@ func main() {
 }
 
 func getRoot(w http.ResponseWriter, r *http.Request) {
-	ip := strings.Split(r.RemoteAddr, ":")[0]
-	_, err := io.WriteString(w, fmt.Sprintf("Your ip: %s", ip))
+	ip := getIp(r)
+	_, err := io.WriteString(w, fmt.Sprintf("Your ip4: %s", ip))
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func getIp(r *http.Request) string {
+	return strings.Split(r.RemoteAddr, ":")[0]
 }
