@@ -5,7 +5,7 @@ RUN go get -d -v && \
     go build -v -o ./my-ip && \
     chmod +x ./my-ip
 
-FROM alpine:latest
+FROM debian:11
 COPY --from=builder /build /app
 RUN ls -la /app
 WORKDIR /app
