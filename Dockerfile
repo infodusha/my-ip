@@ -5,8 +5,9 @@ RUN go get -d -v && \
     go build -v -o ./my-ip && \
     chmod +x ./my-ip
 
-#FROM alpine:latest
-#WORKDIR /root
-#COPY --from=builder /build ./
+FROM alpine:latest
+COPY --from=builder /build /app
+RUN ls -la /app
+WORKDIR /app
 EXPOSE 8080
 CMD ["./my-ip"]
