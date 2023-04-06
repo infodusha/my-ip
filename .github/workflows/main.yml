@@ -5,7 +5,7 @@ on:
     branches: ['main']
 
 env:
-  REGISTRY: https://registry.infodusha.ru
+  REGISTRY: registry.infodusha.ru
   IMAGE_NAME: my-ip
 
 jobs:
