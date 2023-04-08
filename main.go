@@ -34,9 +34,9 @@ func getIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func getIp(r *http.Request) string {
-	realIp := r.Header.Get("X-Real-Ip")
-	if realIp != "" {
-		return realIp
+	connectingIp := r.Header.Get("CF-Connecting-IP")
+	if connectingIp != "" {
+		return connectingIp
 	}
 	forwarded := r.Header.Get("X-Forwarded-For")
 	if forwarded != "" {
